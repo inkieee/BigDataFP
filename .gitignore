@@ -1,1 +1,3 @@
-mongodbcreds.txt
+.env
+data/
+playground-1.mongodb.js
