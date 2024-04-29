@@ -1,0 +1,27 @@
+AQI Variation over Time for each Territory/State
+    X-axis (Date by Month):
+
+    This axis represents time, specifically broken down by month. Each data point on the X-axis will represent a specific month (e.g., January, February, etc.).
+
+    Y-axis (AQI):
+
+        This axis represents the Air Quality Index (AQI). The scale on the Y-axis will likely range from low AQI values (indicating good air quality) to high AQI values (indicating poor air quality).
+
+    Series of State Name:
+
+        This refers to multiple lines or areas on the chart, each representing data for a specific state. The legend will associate line colors or patterns with individual state names, allowing you to compare AQI trends across different states.
+
+    Overall Visualization:
+
+    The chart will display stacked area regions, where each area represents the AQI for a particular state over time. By looking at the chart, you can see how AQI varies by month for each state. Here are some insights you might glean from this visualization:
+
+        Seasonal variations: You might observe if AQI values tend to be higher or lower in certain months for specific states.
+        State comparisons: You can compare AQI trends between states to see if some states consistently have higher or lower AQI values throughout the year.
+        Outliers: The chart might reveal months with unusually high or low AQI values for a particular state.
+
+    Additional Considerations:
+
+        The chart might use transparency for the area fills to allow better visualization of overlapping areas when multiple states have similar AQI values.
+        You might have additional features like tooltips that display specific AQI values for a state when hovering over a data point on the chart.
+
+    Overall, a discrete area chart with this configuration is a valuable tool for analyzing and comparing AQI data across different states and months, providing insights into potential seasonal variations and state-specific air quality trends.
