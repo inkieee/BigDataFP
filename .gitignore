@@ -1,3 +1,4 @@
 .env
+env.conf
 data/
 playground-1.mongodb.js

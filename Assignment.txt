@@ -19,3 +19,12 @@ Also mention what you liked/didn't link in this course.
 - Push your project to Github Repo and share the URL.
 
 - UNLISTED Youtube URL of the video. (No Google Drives/Shares). Only YouTube.
+
+
+
+https://www.mongodb.com/docs/atlas/data-federation/query/sql/tableau/connect/
+
+https://github.com/redis-field-engineering/redis-sql-odbc-dist
+
+https://neo4j.com/developer/kb/how-to-use-the-bi-connector-with-tableau-desktop/
+
