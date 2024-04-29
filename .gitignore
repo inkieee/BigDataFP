@@ -1,4 +1,6 @@
 .env
 env.conf
+env.py
+env*
 data/
 playground-1.mongodb.js
