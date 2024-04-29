@@ -10,3 +10,4 @@ pandas
 seaborn
 pymongo
 matplotlib
+scikit-learn #sklearn
