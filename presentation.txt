@@ -1,0 +1,9 @@
+Hi, my name is Kevin and this is Air Quality Visuals with MongoDB.
+
+This is a geographical chloropleth graph of the mean AQI for each state across the years. From the key on the side we can see that the highest, and therefore, worst air quality is California, and the best being North Dakota.
+
+With MondoDB Atlas Charts, it was made simply by providing the State Name field for the Location, and the intensity field, Color, with AQI. The shape scheme of the graph is 'US States', and is modified from the Customize window > General Tab > Under the Shape Scheme section. Presently, MongoDB Charts supports shape schemes such as Australian LGAs, Canadian , and Dutch Provinces, German States, Italian Regions, UK Counties/Districts, and US States. Had the State Name field not been provided as a Data field, it would have had to been determind via it's lat/long coordinates first.
+
+MongoDB is quite confusing. Their online repetoire of tools varies quite a bit, and was a lot to discern between self hosted tools and their online SaaS platform.
+
+This is a Discrete Area chart
