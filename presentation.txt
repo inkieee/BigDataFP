@@ -1,5 +1,5 @@
 Hi, my name is Kevin and this is Air Quality Visuals with MongoDB.
-Exploratory analysis of MongoDB's tools. 
+An exploratory analysis of MongoDB's tools. 
 
 My goals for this project were to explore visualization tools using MongoDB, get more comfortable with cloud based utilities instead of self hosted tools, and not to spend money if I can.
 
@@ -7,15 +7,17 @@ General steps for this project were to obtain data, which I found through Kaggle
 
 The data obtained from kaggle for this project were Air Quality Index (or AQI) data of US metro areas from 1980 to 2021. It included over 10 million records with features labled: "State Name", "Date", "AQI", "Category", "Defining Parameter", "Latitude", "Longitude", and "County Name", This data was obtained from the EPA.
 
-The original data resided in a csv file of size 669 MB in just data alone. The limit on MongoDB's free M0 clusters is 500 Mb total, including storage size, document size, and index size. Through trial and error of decreasing records via filtering per year, I brought the data size down to 307.81 Mb by awking the file for rows with an increasingly larger range of dates and redirecting the output into a new file. Using wc to count the records left in the new csv file, we can see 10.158 million records decreases down to 1.339 million records.
+The original data resided in a csv file of size 669 MB in just data alone. The limit on MongoDB's free M0 clusters is 500 Mb total. Through trial and error of decreasing records via filtering per year, I brought the data size down to 307.81 Mb by awking the file for rows with an increasingly larger range of dates and redirecting the output into a new file. Using wc to count the records left in the new csv file, we can see 10.158 million records decreases down to 1.339 million records.
 
-MongoDB is quite confusing. Their online repetoire of tools varies quite a bit, and was a lot to discern between self hosted tools and their online SaaS platform. For this project it boils down to usage of 3 of their platforms. First utilizing Compass to upload the csv file into a MongoDB database. Then registering and initiating a MongoDB Atlas cluster for a new free-tier cluster. Then using their SaaS Charts utility to generate charts.
+MongoDB is quite confusing. Their online repetoire of tools varies quite a bit. For this project it boils down to usage of 3 of their services. First utilizing Compass to upload the csv file into a MongoDB database. Then registering and initiating a MongoDB Atlas cluster. Then using their Charts utility to generate charts.
 
 To Import Data with Compass, we simply create a new Database and New collection name after launching the GUI.
 
 Selecting ADD Data, and Import JSON or CSV file.
 
-With the Atlas Free Tier, there are limitations such as 512 MB storage limit, Shared RAM and VCPUs, and limitation to cluster management, including the inability to set backups for the cluster, inability to configure storage size for the cluster, and inability to change the replication factor or replicaset tags, meaning it's stuck at 3 Nodes with no shards.
+With the Atlas Free Tier, there are limitations such as 512 MB storage limit, Shared RAM and VCPUs, and limitation to cluster management, 
+
+including the inability to set backups for the cluster, sharding and replication factors.
 
 Once the data is in Compass, we connect our instance to Atlas by selecting Connect after deploying a new Project.
 
@@ -33,28 +35,33 @@ Select a Data source.
 
 Then we are provided a web interface with our data fields for our given data source shown on the side, and are provided an available roster of charts we can make such as Line charts, area charts, grids, geo, etc.
 
-MongoDB Charts do of specific limits per chart, such as 1000 documents for Geo Scatter type charts.
+MongoDB Charts do have specific limits per chart, such as 1000 documents for Geo Scatter type charts.
 
 Or 50,000 documents for Geo Heatmap type charts.
 
 As an exploratory assessment, I utilized Jupyter to generate plots with seaborn including plots for context such as the Heatmap avarege of AQI by date, hoping to see some correlation off AQI over time.
 
-(From jupyter html)
 Also generate some pair plots of each state vs Latitude and longitude hoping to see some relationship between coordinates and AQI.
 
-But ultimately had an easier time generating plots with MongoDB Charts, including this chart. This is a geographical chloropleth graph of the mean AQI for each state across the years. 
+But ultimately had an easier time generating plots with MongoDB Charts, including this chart. This is a geographical chloropleth chart of the mean AQI for each state across the years. 
 
 From the key on the side we can see that the highest, and therefore, worst air quality is in the state of California, and the best being North Dakota.
 
-With MondoDB Atlas Charts, it was made simply by providing the State Name field for the Location, and the intensity field, Color, with AQI. The shape scheme of the graph is 'US States', and is modified from the Customize window > General Tab > Under the Shape Scheme section. Presently, MongoDB Charts supports shape schemes such as Australian LGAs, Canadian, and Dutch Provinces, German States, Italian Regions, UK Counties/Districts, and US States. Had the State Name field not been provided as a Data field, it would have had to been determind via it's lat/long coordinates first.
+With MondoDB Atlas Charts, it was made simply by providing the State Name field for the Location, and the intensity field, Color, with AQI. The shape scheme of the graph is 'US States', and is modified from the Customize window > General Tab > Under the Shape Scheme section. Presently, MongoDB Charts supports shape schemes such as Australian LGAs, Canadian, and Dutch Provinces, German States, Italian Regions, UK Counties/Districts, and US States. Had the State Name field not been provided as a Data field, it would have had to been determined via it's lat/long coordinates first.
 
-This is a Discrete Area chart of the Monthly Binned dates against the aggregate sum AQI for each Territory. From the chart we can see a cyclical nature of AQI increasing in spring and summer months, peaking around May-June for each year, suggesting higher AQI correlates to seasonal fluctuations.
+This is a Discrete Area chart of the Monthly Binned dates against the aggregate sum AQI for each Territory. 
 
-With this 100% Stacked Area chart, plotting aggregate sum AQI against date, with using Defining Parameter as the percentage feature for AQI; we can notice that there is a cyclical relationship in general over the seasons similiar to the total AQI of the previous chart. But in addition, we can see that the percentage of the defining feature seems more varied due to ground ozone increasing during the spring and summer months as depicted by this larger yellow area. Research suggests that the air quality is worse because of this increase in ground ozone level, which is caused by increase in sunlight and heat. Longer daylight ours accelerate reactions which create ozone.
+From the chart we can see a cyclical nature of AQI increasing in spring and summer months, peaking around May-June for each year, suggesting higher AQI correlates to seasonal fluctuations.
+
+With this 100% Stacked Area chart, plotting aggregate sum AQI against date, with using Defining Parameter as the percentage feature for AQI;
+
+we can notice that there is a cyclical relationship in general over the seasons similiar to the total AQI of the previous chart. But in addition, we can see that the percentage of the defining feature seems more varied due to ground ozone increasing during the spring and summer months as depicted by this larger yellow area. Research suggests that the air quality is worse because of this increase in ground ozone level, which is caused by increase in sunlight and heat. Longer daylight hours accelerate reactions which create ozone.
 
 Provided is the github repository for the materials used to generate this project.
 
-Additionally, In general, I enjoyed the exposure to wide breaedth of the tools explored in this class, especially with CICD and HA concepts. It was also very useful to have example git repos to practice with.
+Additionally, In general, I enjoyed the exposure to the wide breadth of the tools explored in this class, especially with CICD and HA concepts. It was also very useful to have example git repos to practice with.
 
-I disliked the use of one of tool trials. Which is hard to suggest since it is a balancing act between all the tools commercial industry may use, and what could be explored for free. I just don't the idea that a project in the future may require usage of one of these tools, and that I'd have to either pay or make a new account for another trial. Additionally I didn't like that I couldn't download the gitbook easily. It's tedious to download every webpage for offline review and hard to determine whether a page has been updated and if I need to redownload a page or not.
+I disliked the use of one off tool trials. Which is hard to suggest since it is a balancing act between all the tools commercial industry may use, and what could be explored for free. I just don't the idea that a project in the future may require usage of one of these tools, and that I'd have to either pay or make a new account for another trial. Additionally I didn't like that I couldn't download the gitbook easily. It's tedious to download every webpage for offline review and hard to determine whether a page has been updated and if I need to redownload a page or not.
+
+But in generally I really enjoyed the class and the tools it exposed us to. Thank you very much!
 
