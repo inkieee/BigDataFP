@@ -4,4 +4,3 @@ Cut down data from 10 million records to 1.37 million so MongoDB Atlas can handl
 Use Jupyter to explore data.
 Saw 2021 has some missing data. Cut it off. Still have 1.33 millions records.
 Attempt to use MongoDB Atlas and Charts for cool things like Chloropleths. 
-Then generate a main.py and support.py module to recreate with Non *aaS dependent infrastructure..
